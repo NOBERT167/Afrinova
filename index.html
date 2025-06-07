@@ -53,6 +53,11 @@
         font-weight: bold;
         color: var(--primary-green);
       }
+      .logo img {
+        width: 60px;
+        height: auto;
+        cursor: pointer;
+      }
 
       .nav-links {
         display: flex;
@@ -383,7 +388,7 @@
         }
 
         .hero h1 {
-          font-size: 2.5rem;
+          font-size: 2rem;
         }
 
         .hero p {
@@ -403,6 +408,14 @@
           grid-template-columns: 1fr;
         }
       }
+      @media (max-width: 600px) {
+        .hero h1 {
+          font-size: 1.5rem;
+        }
+        .hero p {
+          font-size: 1rem;
+        }
+      }
 
       /* Smooth scrolling */
       html {
@@ -414,7 +427,8 @@
     <!-- Header -->
     <header>
       <nav>
-        <div class="logo">Afrinova X Academy</div>
+        <!-- <div class="logo">Afrinova X Academy</div> -->
+        <div class="logo"><img src="Assets/Logo.png" /></div>
         <ul class="nav-links">
           <li><a href="#home">Home</a></li>
           <li><a href="#about">About</a></li>
