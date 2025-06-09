@@ -3,352 +3,528 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Afrinova X Academy - Ignite Young Minds</title>
+    <title>Afrinova X Academy - Empowering Africa's Future</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
     <style>
+      :root {
+        --primary: #1fa185;
+        --secondary: #ded54d;
+        --accent: #ffffff;
+        --dark: #0a2e26;
+        --light: #f8f9fa;
+        --transition: all 0.4s ease;
+      }
+
       * {
         margin: 0;
         padding: 0;
         box-sizing: border-box;
       }
 
-      :root {
-        --primary-green: #1fa185;
-        --accent-yellow: #ded54d;
-        --white: white;
-        --dark-text: #2c3e50;
-        --light-gray: #f8f9fa;
-        --shadow: rgba(31, 161, 133, 0.1);
-      }
-
       body {
-        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        font-family: "Poppins", sans-serif;
+        color: var(--dark);
+        background-color: var(--light);
         line-height: 1.6;
-        color: var(--dark-text);
         overflow-x: hidden;
       }
 
-      /* Header & Navigation */
+      h1,
+      h2,
+      h3,
+      h4 {
+        font-weight: 700;
+        line-height: 1.2;
+      }
+
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+
+      .container {
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      .btn {
+        display: inline-block;
+        padding: 12px 30px;
+        background: var(--primary);
+        color: var(--accent);
+        border-radius: 30px;
+        font-weight: 500;
+        transition: var(--transition);
+        border: 2px solid transparent;
+        cursor: pointer;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-size: 14px;
+      }
+
+      .btn:hover {
+        background: transparent;
+        border-color: var(--primary);
+        color: var(--primary);
+        transform: translateY(-3px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+      }
+
+      .btn-secondary {
+        background: var(--secondary);
+        color: var(--dark);
+      }
+
+      .btn-secondary:hover {
+        border-color: var(--secondary);
+        color: var(--dark);
+      }
+
+      /* Header Styles */
       header {
         position: fixed;
         top: 0;
+        left: 0;
         width: 100%;
-        background: rgba(255, 255, 255, 0.95);
-        backdrop-filter: blur(10px);
         z-index: 1000;
-        padding: 1rem 0;
-        transition: all 0.3s ease;
+        background: rgba(255, 255, 255, 0.95);
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        padding: 15px 0;
+        transition: var(--transition);
       }
 
-      nav {
-        max-width: 1200px;
-        margin: 0 auto;
+      header.scrolled {
+        padding: 10px 0;
+      }
+
+      .header-container {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding: 0 2rem;
       }
 
       .logo {
-        font-size: 1.5rem;
-        font-weight: bold;
-        color: var(--primary-green);
-      }
-      .logo img {
-        width: 60px;
-        height: auto;
-        cursor: pointer;
+        font-size: 28px;
+        font-weight: 700;
+        color: var(--primary);
       }
 
-      .nav-links {
+      .logo span {
+        color: var(--secondary);
+      }
+
+      nav ul {
         display: flex;
         list-style: none;
-        gap: 2rem;
       }
 
-      .nav-links a {
-        text-decoration: none;
-        color: var(--dark-text);
+      nav ul li {
+        margin-left: 30px;
+      }
+
+      nav ul li a {
         font-weight: 500;
-        transition: color 0.3s ease;
+        position: relative;
+        transition: var(--transition);
       }
 
-      .nav-links a:hover {
-        color: var(--primary-green);
+      nav ul li a:hover {
+        color: var(--primary);
       }
 
-      .mobile-menu {
+      nav ul li a::after {
+        content: "";
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: var(--primary);
+        transition: var(--transition);
+      }
+
+      nav ul li a:hover::after {
+        width: 100%;
+      }
+
+      .mobile-toggle {
         display: none;
-        flex-direction: column;
+        font-size: 24px;
         cursor: pointer;
-      }
-
-      .mobile-menu span {
-        width: 25px;
-        height: 3px;
-        background: var(--primary-green);
-        margin: 3px 0;
-        transition: 0.3s;
       }
 
       /* Hero Section */
       .hero {
         height: 100vh;
+        min-height: 700px;
         background: linear-gradient(
-          135deg,
-          var(--primary-green),
-          var(--accent-yellow)
-        );
+            135deg,
+            rgba(31, 161, 133, 0.9) 0%,
+            rgba(222, 213, 77, 0.8) 100%
+          ),
+          url("https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80")
+            center/cover no-repeat;
         display: flex;
         align-items: center;
-        justify-content: center;
+        color: var(--accent);
         text-align: center;
         position: relative;
         overflow: hidden;
       }
 
-      .hero::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><pattern id="network" patternUnits="userSpaceOnUse" width="100" height="100"><circle cx="20" cy="20" r="2" fill="rgba(255,255,255,0.1)"/><line x1="20" y1="20" x2="80" y2="80" stroke="rgba(255,255,255,0.1)" stroke-width="1"/></pattern></defs><rect width="100%" height="100%" fill="url(%23network)"/></svg>')
-          center/cover;
-        animation: float 20s ease-in-out infinite;
-      }
-
       .hero-content {
         max-width: 800px;
-        padding: 2rem;
-        z-index: 2;
+        margin: 0 auto;
         position: relative;
+        z-index: 2;
+        padding: 0 20px;
       }
 
       .hero h1 {
         font-size: 3.5rem;
-        color: var(--white);
-        margin-bottom: 1.5rem;
-        font-weight: 700;
-        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-        animation: slideUp 1s ease-out;
+        margin-bottom: 20px;
+        text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        animation: fadeInUp 1s ease;
       }
 
       .hero p {
-        font-size: 1.3rem;
-        color: var(--white);
-        margin-bottom: 2rem;
-        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
-        animation: slideUp 1s ease-out 0.3s both;
+        font-size: 1.2rem;
+        margin-bottom: 30px;
+        animation: fadeInUp 1s ease 0.2s forwards;
+        opacity: 0;
       }
 
-      .cta-button {
-        background: var(--white);
-        color: var(--primary-green);
-        padding: 1rem 2rem;
-        border: none;
-        border-radius: 50px;
-        font-size: 1.1rem;
-        font-weight: bold;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        text-decoration: none;
-        display: inline-block;
-        animation: slideUp 1s ease-out 0.6s both;
+      .hero-btns {
+        animation: fadeInUp 1s ease 0.4s forwards;
+        opacity: 0;
       }
 
-      .cta-button:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+      .hero-btns .btn {
+        margin: 0 10px;
       }
 
-      /* Section Styles */
+      /* Section Styling */
       section {
-        padding: 5rem 0;
-        max-width: 1200px;
-        margin: 0 auto;
-        padding-left: 2rem;
-        padding-right: 2rem;
+        padding: 100px 0;
       }
 
       .section-title {
-        font-size: 2.5rem;
         text-align: center;
-        margin-bottom: 3rem;
-        color: var(--primary-green);
+        margin-bottom: 60px;
         position: relative;
       }
 
-      .section-title2 {
+      .section-title h2 {
         font-size: 2.5rem;
-        text-align: center;
-        margin-bottom: 3rem;
-        color: var(--secondary-green);
-        position: relative;
+        display: inline-block;
+        color: var(--primary);
       }
 
-      .section-title::after {
+      .section-title h2::after {
         content: "";
         position: absolute;
+        width: 80px;
+        height: 4px;
+        background: var(--secondary);
         bottom: -10px;
         left: 50%;
         transform: translateX(-50%);
-        width: 80px;
-        height: 4px;
-        background: var(--accent-yellow);
         border-radius: 2px;
       }
 
       /* About Section */
-      .about {
-        background: var(--light-gray);
+      .about-content {
+        display: flex;
+        gap: 40px;
+        align-items: center;
       }
 
-      .about-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 3rem;
-        margin-top: 3rem;
+      .about-text {
+        flex: 1;
       }
 
-      .about-card {
-        background: var(--white);
-        padding: 2rem;
-        border-radius: 15px;
-        box-shadow: 0 10px 30px var(--shadow);
-        transition: transform 0.3s ease;
+      .about-image {
+        flex: 1;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
       }
 
-      .about-card:hover {
-        transform: translateY(-10px);
+      .about-image img {
+        width: 100%;
+        height: auto;
+        display: block;
+        transition: var(--transition);
       }
 
-      .about-card h3 {
-        color: var(--primary-green);
-        margin-bottom: 1rem;
-        font-size: 1.5rem;
+      .about-image:hover img {
+        transform: scale(1.05);
+      }
+
+      /* Mission Section */
+      .mission {
+        background: linear-gradient(to right, #1fa185, #1a8d75);
+        color: var(--accent);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .mission::before {
+        content: "";
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: radial-gradient(
+          circle,
+          rgba(255, 255, 255, 0.1) 0%,
+          rgba(255, 255, 255, 0) 70%
+        );
+        transform: rotate(30deg);
+      }
+
+      .mission-content {
+        max-width: 800px;
+        margin: 0 auto;
+        text-align: center;
+        position: relative;
+        z-index: 2;
+      }
+
+      .mission-stats {
+        display: flex;
+        justify-content: space-around;
+        margin-top: 50px;
+        flex-wrap: wrap;
+      }
+
+      .stat-item {
+        text-align: center;
+        padding: 20px;
+      }
+
+      .stat-item h3 {
+        font-size: 3rem;
+        margin-bottom: 10px;
       }
 
       /* Programs Section */
       .programs-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-        gap: 2rem;
-        margin-top: 3rem;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 30px;
       }
 
       .program-card {
-        background: linear-gradient(135deg, var(--white), var(--light-gray));
-        padding: 2rem;
+        background: var(--accent);
         border-radius: 10px;
-        box-shadow: 0 15px 35px var(--shadow);
-        transition: all 0.3s ease;
-        border: 2px solid transparent;
+        overflow: hidden;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        transition: var(--transition);
       }
 
       .program-card:hover {
-        border-color: var(--primary-green);
-        transform: translateY(-5px);
-      }
-
-      .program-card h3 {
-        color: var(--primary-green);
-        margin-bottom: 1rem;
-        font-size: 1.4rem;
+        transform: translateY(-10px);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
       }
 
       .program-icon {
-        width: 60px;
-        height: 60px;
-        background: var(--accent-yellow);
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin-bottom: 1rem;
-        font-size: 1.5rem;
-      }
-
-      /* Impact Section */
-      .impact {
-        background: var(--primary-green);
-        color: var(--white);
-      }
-
-      .impact-stats {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        gap: 2rem;
+        background: var(--primary);
+        color: var(--accent);
+        font-size: 2.5rem;
+        padding: 30px;
         text-align: center;
-        margin-top: 3rem;
       }
 
-      .stat-item {
-        padding: 2rem;
+      .program-content {
+        padding: 25px;
       }
 
-      .stat-number {
-        font-size: 3rem;
+      .program-content h3 {
+        margin-bottom: 15px;
+        color: var(--primary);
+      }
+
+      .program-content ul {
+        list-style: none;
+        margin-top: 15px;
+      }
+
+      .program-content ul li {
+        padding: 8px 0;
+        padding-left: 25px;
+        position: relative;
+      }
+
+      .program-content ul li::before {
+        content: "✓";
+        position: absolute;
+        left: 0;
+        color: var(--secondary);
         font-weight: bold;
-        color: var(--accent-yellow);
-        display: block;
       }
 
-      .stat-label {
+      /* CTA Section */
+      .cta {
+        background: linear-gradient(to right, #ded54d, #d6cf4c);
+        text-align: center;
+        padding: 80px 0;
+      }
+
+      .cta h2 {
+        font-size: 2.8rem;
+        margin-bottom: 20px;
+        color: var(--dark);
+      }
+
+      .cta p {
+        max-width: 700px;
+        margin: 0 auto 30px;
         font-size: 1.1rem;
-        margin-top: 0.5rem;
       }
 
       /* Contact Section */
       .contact {
-        background: var(--light-gray);
+        background: var(--light);
       }
 
-      .contact-content {
+      .contact-grid {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 3rem;
-        margin-top: 3rem;
+        gap: 40px;
       }
 
       .contact-info {
-        background: var(--white);
-        padding: 2rem;
-        border-radius: 15px;
-        box-shadow: 0 10px 30px var(--shadow);
+        padding: 30px;
+        background: var(--accent);
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      }
+
+      .contact-info h3 {
+        margin-bottom: 20px;
+        color: var(--primary);
+        position: relative;
+        padding-bottom: 10px;
+      }
+
+      .contact-info h3::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 50px;
+        height: 3px;
+        background: var(--secondary);
+      }
+
+      .contact-details {
+        margin-top: 20px;
       }
 
       .contact-item {
         display: flex;
-        align-items: center;
-        margin-bottom: 1.5rem;
+        margin-bottom: 20px;
       }
 
-      .contact-icon {
-        width: 40px;
-        height: 40px;
-        background: var(--primary-green);
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin-right: 1rem;
-        color: var(--white);
+      .contact-item i {
+        font-size: 1.2rem;
+        color: var(--primary);
+        margin-right: 15px;
+        min-width: 30px;
       }
 
       /* Footer */
       footer {
-        background: var(--dark-text);
-        color: var(--white);
+        background: var(--dark);
+        color: var(--accent);
+        padding: 60px 0 30px;
+      }
+
+      .footer-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 30px;
+        margin-bottom: 40px;
+      }
+
+      .footer-col h4 {
+        margin-bottom: 20px;
+        position: relative;
+        padding-bottom: 10px;
+      }
+
+      .footer-col h4::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 40px;
+        height: 3px;
+        background: var(--secondary);
+      }
+
+      .footer-links {
+        list-style: none;
+      }
+
+      .footer-links li {
+        margin-bottom: 10px;
+      }
+
+      .footer-links a {
+        transition: var(--transition);
+      }
+
+      .footer-links a:hover {
+        color: var(--secondary);
+        padding-left: 5px;
+      }
+
+      .social-links {
+        display: flex;
+        margin-top: 20px;
+      }
+
+      .social-links a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 50%;
+        margin-right: 10px;
+        transition: var(--transition);
+      }
+
+      .social-links a:hover {
+        background: var(--primary);
+        transform: translateY(-5px);
+      }
+
+      .copyright {
         text-align: center;
-        padding: 2rem 0;
+        padding-top: 30px;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        font-size: 0.9rem;
       }
 
       /* Animations */
-      @keyframes slideUp {
+      @keyframes fadeInUp {
         from {
           opacity: 0;
-          transform: translateY(50px);
+          transform: translateY(30px);
         }
         to {
           opacity: 1;
@@ -356,379 +532,648 @@
         }
       }
 
-      @keyframes float {
-        0%,
-        100% {
-          transform: translateY(0px);
-        }
-        50% {
-          transform: translateY(-20px);
-        }
-      }
-
-      .fade-in {
-        opacity: 0;
-        transform: translateY(30px);
-        transition: all 0.8s ease;
-      }
-
-      .fade-in.visible {
-        opacity: 1;
-        transform: translateY(0);
-      }
-
       /* Responsive Design */
+      @media (max-width: 992px) {
+        .hero h1 {
+          font-size: 2.8rem;
+        }
+
+        .about-content {
+          flex-direction: column;
+        }
+      }
+
       @media (max-width: 768px) {
-        .nav-links {
-          display: none;
+        .mobile-toggle {
+          display: block;
         }
 
-        .mobile-menu {
-          display: flex;
+        nav {
+          position: fixed;
+          top: 80px;
+          right: -100%;
+          width: 280px;
+          height: calc(100vh - 80px);
+          background: var(--accent);
+          transition: var(--transition);
+          box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+        }
+
+        nav.active {
+          right: 0;
+        }
+
+        nav ul {
+          flex-direction: column;
+          padding: 30px;
+        }
+
+        nav ul li {
+          margin: 0;
+          margin-bottom: 20px;
         }
 
         .hero h1 {
+          font-size: 2.3rem;
+        }
+
+        .section-title h2 {
           font-size: 2rem;
         }
 
-        .hero p {
-          font-size: 1.1rem;
+        .hero-btns .btn {
+          display: block;
+          margin: 10px auto;
+          width: 80%;
+          max-width: 250px;
         }
+      }
 
-        .section-title {
-          font-size: 2rem;
-        }
-
+      @media (max-width: 576px) {
         section {
-          padding: 3rem 1rem;
+          padding: 60px 0;
         }
 
-        .about-grid,
-        .programs-grid {
-          grid-template-columns: 1fr;
+        .hero {
+          min-height: 600px;
         }
-      }
-      @media (max-width: 600px) {
+
         .hero h1 {
-          font-size: 1.5rem;
+          font-size: 2rem;
         }
-        .hero p {
-          font-size: 1rem;
-        }
-      }
 
-      /* Smooth scrolling */
-      html {
-        scroll-behavior: smooth;
+        .stat-item h3 {
+          font-size: 2.2rem;
+        }
+
+        .cta h2 {
+          font-size: 2.2rem;
+        }
       }
     </style>
   </head>
   <body>
     <!-- Header -->
     <header>
-      <nav>
-        <!-- <div class="logo">Afrinova X Academy</div> -->
-        <div class="logo"><img src="Assets/Logo.png" /></div>
-        <ul class="nav-links">
-          <li><a href="#home">Home</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#programs">Programs</a></li>
-          <li><a href="#impact">Impact</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-        <div class="mobile-menu">
-          <span></span>
-          <span></span>
-          <span></span>
+      <div class="container header-container">
+        <a href="#" class="logo">Afri<span>nova</span></a>
+        <div class="mobile-toggle">
+          <i class="fas fa-bars"></i>
         </div>
-      </nav>
+        <nav>
+          <ul>
+            <li><a href="#about">Who We Are</a></li>
+            <li><a href="#mission">Our Mission</a></li>
+            <li><a href="#programs">Our Programs</a></li>
+            <li><a href="#why">Why It Matters</a></li>
+            <li><a href="#get-involved">Get Involved</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
     </header>
 
     <!-- Hero Section -->
-    <section id="home" class="hero">
+    <section class="hero">
       <div class="hero-content">
-        <h1>Ignite Young Minds. Shape Tomorrow's Innovators.</h1>
+        <h1>Empowering Africa’s Future—From Classrooms to Boardrooms</h1>
         <p>
-          At Afrinova X Academy, we're on a mission to bridge Africa's digital
-          divide—one student at a time. Empowering primary and secondary
-          learners with hands-on AI education and real-world tech experience,
-          we're cultivating the next generation of visionary problem-solvers.
+          Afrinova X Academy is more than an education initiative—it’s a
+          pioneering AI startup dedicated to equipping students, businesses, and
+          individuals with the skills to thrive in an AI-driven world. Join us
+          as we bridge the digital divide and ignite innovation across every
+          sector.
         </p>
-        <a href="#about" class="cta-button">Discover Our Mission</a>
+        <div class="hero-btns">
+          <a href="#programs" class="btn">Explore Programs</a>
+          <a href="#contact" class="btn btn-secondary">Contact Us</a>
+        </div>
       </div>
     </section>
 
-    <!-- About Section -->
+    <!-- Who We Are -->
     <section id="about" class="about">
-      <h2 class="section-title fade-in">Who We Are</h2>
-      <div class="about-grid">
-        <div class="about-card fade-in">
-          <h3>Our Vision</h3>
-          <p>
-            Afrinova X Academy is a trailblazing initiative committed to
-            bringing cutting-edge tech education to classrooms across Africa. We
-            envision a continent where every child, regardless of background,
-            has the skills and confidence to thrive in an AI-driven world.
-          </p>
+      <div class="container">
+        <div class="section-title">
+          <h2>Who We Are</h2>
         </div>
-        <div class="about-card fade-in">
-          <h3>Our Mission</h3>
-          <p><strong>Empower. Educate. Elevate.</strong></p>
-          <ul style="margin-top: 1rem; padding-left: 1rem">
-            <li>
-              <strong>Empower:</strong> Fuel curiosity and creativity through
-              immersive, student-centered learning.
-            </li>
-            <li>
-              <strong>Educate:</strong> Deliver structured AI literacy
-              workshops, hands-on projects, and speaker sessions led by industry
-              experts.
-            </li>
-            <li>
-              <strong>Elevate:</strong> Build lasting partnerships with edtech
-              leaders, schools, and tech communities to scale our impact
-              continent-wide.
-            </li>
-          </ul>
-        </div>
-        <div class="about-card fade-in">
-          <h3>Why It Matters</h3>
-          <p>
-            Today's learners are tomorrow's leaders. As schools increasingly
-            embrace technology, we see budding innovators eager to push
-            boundaries. Afrinova X Academy provides the platform for them to
-            collaborate with peers and professionals, build confidence through
-            guided learning, and create solutions that address local and global
-            needs.
-          </p>
+        <div class="about-content">
+          <div class="about-text">
+            <p>
+              Afrinova X Academy is a dynamic AI startup on a mission to
+              transform learning and innovation across Africa. Whether you’re a
+              school, a growing enterprise, or an ambitious professional, we
+              deliver tailored AI literacy, hands-on experiences, and strategic
+              consulting to propel you forward.
+            </p>
+            <p>
+              Our approach combines cutting-edge technology with deep
+              understanding of local contexts to create solutions that are both
+              innovative and practical.
+            </p>
+            <div style="margin-top: 30px">
+              <a href="#mission" class="btn">Our Mission</a>
+            </div>
+          </div>
+          <div class="about-image">
+            <img
+              src="https://images.unsplash.com/photo-1553877522-43269d4ea984?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80"
+              alt="Afrinova Team"
+            />
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- Programs Section -->
-    <section id="programs">
-      <h2 class="section-title fade-in">Our Programs</h2>
-      <div class="programs-grid">
-        <div class="program-card fade-in">
-          <div class="program-icon">🧠</div>
-          <h3>AI Awareness Workshops</h3>
-          <p>
-            Short, interactive sessions that demystify artificial
-            intelligence—teaching fundamentals, ethics, and real-life
-            applications that resonate with young minds.
-          </p>
+    <!-- Our Mission -->
+    <section id="mission" class="mission">
+      <div class="container">
+        <div class="section-title">
+          <h2>Our Mission</h2>
         </div>
-        <div class="program-card fade-in">
-          <div class="program-icon">🏆</div>
-          <h3>Tech Summits & Tournaments</h3>
-          <p>
-            Dynamic events where student teams compete, collaborate, and
-            showcase innovative projects, spurring healthy competition and
-            community engagement.
-          </p>
-        </div>
-        <div class="program-card fade-in">
-          <div class="program-icon">🔬</div>
-          <h3>Hands-On Learning Labs</h3>
-          <p>
-            Project-based modules tackling real-world challenges—students design
-            solutions, code prototypes, and learn by doing.
-          </p>
-        </div>
-        <div class="program-card fade-in">
-          <div class="program-icon">👾</div>
-          <h3>Innovation Labs</h3>
-          <p>
-            Vibrant, student-centered hubs where imagination meets
-            implementation. Here, young minds explore artificial intelligence
-            through critical thinking, design thinking, and real-world problem
-            solving.
-          </p>
+        <div class="mission-content">
+          <h2 style="font-size: 2.8rem; margin-bottom: 30px">
+            Inspire. Innovate. Impact.
+          </h2>
+          <div class="mission-stats">
+            <div class="stat-item">
+              <h3>Inspire</h3>
+              <p>
+                Spark curiosity and confidence through immersive, learner-first
+                experiences.
+              </p>
+            </div>
+            <div class="stat-item">
+              <h3>Innovate</h3>
+              <p>
+                Design programs—from youth labs to corporate bootcamps—that
+                tackle real-world challenges.
+              </p>
+            </div>
+            <div class="stat-item">
+              <h3>Impact</h3>
+              <p>
+                Forge partnerships with schools, SMEs, and industry leaders to
+                scale AI adoption continent-wide.
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- Impact Section -->
-    <!-- <section id="impact" class="impact">
-      <h2 class="section-title2 fade-in">Our Impact</h2>
-      <div class="impact-stats">
-        <div class="stat-item fade-in">
-          <span class="stat-number">500+</span>
-          <span class="stat-label">Students Empowered</span>
+    <!-- Our Programs -->
+    <section id="programs" class="programs">
+      <div class="container">
+        <div class="section-title">
+          <h2>Our Programs</h2>
         </div>
-        <div class="stat-item fade-in">
-          <span class="stat-number">5+</span>
-          <span class="stat-label">Schools Partnered</span>
-        </div>
-        <div class="stat-item fade-in">
-          <span class="stat-number">25+</span>
-          <span class="stat-label">Workshops Delivered</span>
-        </div>
-        <div class="stat-item fade-in">
-          <span class="stat-number">10+</span>
-          <span class="stat-label">Industry Partners</span>
+        <div class="programs-grid">
+          <!-- Education & Youth Empowerment -->
+          <div class="program-card">
+            <div class="program-icon">
+              <i class="fas fa-graduation-cap"></i>
+            </div>
+            <div class="program-content">
+              <h3>🎓 Education & Youth Empowerment</h3>
+              <ul>
+                <li>
+                  AI Awareness Workshops: Interactive sessions for students
+                </li>
+                <li>Hands-On Learning Labs: Project-based modules</li>
+                <li>Tech Summits & Tournaments: Competitive events</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Business & Enterprise Solutions -->
+          <div class="program-card">
+            <div class="program-icon">
+              <i class="fas fa-briefcase"></i>
+            </div>
+            <div class="program-content">
+              <h3>🏢 Business & Enterprise Solutions</h3>
+              <ul>
+                <li>Corporate AI Bootcamps: Intensive training</li>
+                <li>Custom Consulting: Bespoke AI roadmaps</li>
+                <li>Executive Speaker Series: Thought-leadership talks</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Individual Upskilling -->
+          <div class="program-card">
+            <div class="program-icon">
+              <i class="fas fa-user-graduate"></i>
+            </div>
+            <div class="program-content">
+              <h3>👥 Individual Upskilling</h3>
+              <ul>
+                <li>Career Accelerator Courses: Hands-on certifications</li>
+                <li>Mentorship Clinics: One-on-one coaching</li>
+                <li>Innovation Challenges: Monthly hackathons</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- AI ThinkTanks & Innovation Labs -->
+          <div class="program-card">
+            <div class="program-icon">
+              <i class="fas fa-lightbulb"></i>
+            </div>
+            <div class="program-content">
+              <h3>💡 AI ThinkTanks & Innovation Labs</h3>
+              <p>
+                Our flagship labs are vibrant hubs where cross-sector teams
+                collaborate on AI-powered projects. From ideation to prototype,
+                participants receive mentorship, access to tools, and
+                opportunities to pitch at demo days.
+              </p>
+            </div>
+          </div>
         </div>
       </div>
-    </section> -->
+    </section>
+
+    <!-- Why It Matters -->
+    <section id="why" class="why">
+      <div class="container">
+        <div class="section-title">
+          <h2>Why It Matters</h2>
+        </div>
+        <div class="about-content">
+          <div class="about-image">
+            <img
+              src="https://images.unsplash.com/photo-1553877522-43269d4ea984?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80"
+              alt="Why Afrinova Matters"
+            />
+          </div>
+          <div class="about-text">
+            <p>
+              AI is reshaping every facet of life and work. Afrinova X Academy
+              ensures that no learner, business, or individual is left behind
+              by:
+            </p>
+            <ul style="margin-top: 20px; list-style: none">
+              <li
+                style="
+                  margin-bottom: 15px;
+                  padding-left: 30px;
+                  position: relative;
+                "
+              >
+                <i
+                  class="fas fa-check"
+                  style="
+                    position: absolute;
+                    left: 0;
+                    top: 5px;
+                    color: var(--secondary);
+                  "
+                ></i>
+                <strong>Bridging Skills Gaps</strong> in education and industry
+              </li>
+              <li
+                style="
+                  margin-bottom: 15px;
+                  padding-left: 30px;
+                  position: relative;
+                "
+              >
+                <i
+                  class="fas fa-check"
+                  style="
+                    position: absolute;
+                    left: 0;
+                    top: 5px;
+                    color: var(--secondary);
+                  "
+                ></i>
+                <strong>Accelerating Digital Transformation</strong> for African
+                enterprises
+              </li>
+              <li
+                style="
+                  margin-bottom: 15px;
+                  padding-left: 30px;
+                  position: relative;
+                "
+              >
+                <i
+                  class="fas fa-check"
+                  style="
+                    position: absolute;
+                    left: 0;
+                    top: 5px;
+                    color: var(--secondary);
+                  "
+                ></i>
+                <strong>Cultivating a Pipeline</strong> of confident, creative
+                AI practitioners
+              </li>
+            </ul>
+            <p style="margin-top: 20px">
+              We're building the foundation for Africa's technological future,
+              one student and one business at a time.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Get Involved -->
+    <section id="get-involved" class="get-involved">
+      <div class="container">
+        <div class="section-title">
+          <h2>Get Involved</h2>
+        </div>
+        <div class="programs-grid">
+          <div class="program-card">
+            <div class="program-content">
+              <h3>Schools & Students</h3>
+              <p>
+                Integrate our AI workshops into your curriculum and provide
+                students with cutting-edge technology education.
+              </p>
+              <div style="margin-top: 20px">
+                <a href="#contact" class="btn">Learn More</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="program-card">
+            <div class="program-content">
+              <h3>Businesses & Teams</h3>
+              <p>
+                Upskill your workforce with our corporate AI bootcamps tailored
+                to your industry needs.
+              </p>
+              <div style="margin-top: 20px">
+                <a href="#contact" class="btn">Explore Solutions</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="program-card">
+            <div class="program-content">
+              <h3>Innovators & Mentors</h3>
+              <p>
+                Guide the next wave of African AI entrepreneurs in our
+                ThinkTanks and Innovation Labs.
+              </p>
+              <div style="margin-top: 20px">
+                <a href="#contact" class="btn">Join Us</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="program-card">
+            <div class="program-content">
+              <h3>Supporters & Sponsors</h3>
+              <p>
+                Propel our mission with resources, funding, or volunteer
+                expertise to expand our impact.
+              </p>
+              <div style="margin-top: 20px">
+                <a href="#contact" class="btn">Support Us</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="cta">
+      <div class="container">
+        <h2>Transform Your World with AI</h2>
+        <p>
+          Ready to redefine what's possible with AI? Reach out today to explore
+          partnerships, book a demo, or enroll in your first workshop.
+        </p>
+        <div style="margin-top: 30px">
+          <a href="#contact" class="btn">Contact Us</a>
+          <a
+            href="#programs"
+            class="btn btn-secondary"
+            style="background: var(--primary)"
+            >View Programs</a
+          >
+        </div>
+      </div>
+    </section>
 
     <!-- Contact Section -->
     <section id="contact" class="contact">
-      <h2 class="section-title fade-in">Get Involved Today</h2>
-      <div class="contact-content">
-        <div class="contact-info fade-in">
-          <h3 style="color: var(--primary-green); margin-bottom: 2rem">
-            Join Our Mission
-          </h3>
-          <p style="margin-bottom: 2rem">
-            Whether you're a school, sponsor, or tech enthusiast, there's a
-            place for you in our journey. Let's work together to unlock Africa's
-            brightest potential.
-          </p>
-
-          <div class="contact-item">
-            <div class="contact-icon">📧</div>
-            <div>
-              <strong>Email:</strong><br />
-              afrinovaxacademiyinfo@gmail.com
-            </div>
-          </div>
-
-          <div class="contact-item">
-            <div class="contact-icon">📱</div>
-            <div>
-              <strong>Phone:</strong><br />
-              +254 792 233373
-            </div>
-          </div>
-
-          <div class="contact-item">
-            <div class="contact-icon">🌐</div>
-            <div>
-              <strong>Social Media:</strong><br />
-              @AfrinovaXAcademy
-            </div>
-          </div>
+      <div class="container">
+        <div class="section-title">
+          <h2>Contact Us</h2>
         </div>
-
-        <div class="contact-info fade-in">
-          <h3 style="color: var(--primary-green); margin-bottom: 2rem">
-            How to Partner
-          </h3>
-
-          <div style="margin-bottom: 2rem">
-            <h4 style="color: var(--primary-green)">🏫 Schools & Educators</h4>
+        <div class="contact-grid">
+          <div class="contact-info">
+            <h3>Get In Touch</h3>
             <p>
-              Bring Afrinova X Academy to your classroom and transform learning
-              experiences.
+              Have questions about our programs or want to collaborate? Reach
+              out to our team and we'll get back to you as soon as possible.
             </p>
+
+            <div class="contact-details">
+              <div class="contact-item">
+                <i class="fas fa-envelope"></i>
+                <div>afrinovaxacademyinfo@gmail.com</div>
+              </div>
+              <div class="contact-item">
+                <i class="fas fa-phone"></i>
+                <div>+254 792 233373</div>
+              </div>
+              <div class="contact-item">
+                <i class="fas fa-globe"></i>
+                <div>www.afrinovax.academy</div>
+              </div>
+              <div class="contact-item">
+                <i class="fas fa-map-marker-alt"></i>
+                <div>Nairobi, Kenya</div>
+              </div>
+            </div>
           </div>
 
-          <div style="margin-bottom: 2rem">
-            <h4 style="color: var(--primary-green)">🤝 Industry Partners</h4>
-            <p>
-              Share your expertise, resources, and network to amplify our
-              impact.
-            </p>
+          <div class="contact-info">
+            <h3>Send Us a Message</h3>
+            <form>
+              <div style="margin-bottom: 20px">
+                <input
+                  type="text"
+                  placeholder="Your Name"
+                  style="
+                    width: 100%;
+                    padding: 12px;
+                    border-radius: 5px;
+                    border: 1px solid #ddd;
+                  "
+                />
+              </div>
+              <div style="margin-bottom: 20px">
+                <input
+                  type="email"
+                  placeholder="Your Email"
+                  style="
+                    width: 100%;
+                    padding: 12px;
+                    border-radius: 5px;
+                    border: 1px solid #ddd;
+                  "
+                />
+              </div>
+              <div style="margin-bottom: 20px">
+                <textarea
+                  placeholder="Your Message"
+                  rows="5"
+                  style="
+                    width: 100%;
+                    padding: 12px;
+                    border-radius: 5px;
+                    border: 1px solid #ddd;
+                  "
+                ></textarea>
+              </div>
+              <button type="submit" class="btn" style="width: 100%">
+                Send Message
+              </button>
+            </form>
           </div>
-
-          <div style="margin-bottom: 2rem">
-            <h4 style="color: var(--primary-green)">💡 Supporters</h4>
-            <p>
-              Fuel our mission with donations, sponsorships, or volunteer time.
-            </p>
-          </div>
-
-          <a
-            href="mailto:afrinovaxacademiyinfo@gmail.com"
-            class="cta-button"
-            style="background: var(--primary-green); color: var(--white)"
-            >Contact Us Now</a
-          >
         </div>
       </div>
     </section>
 
     <!-- Footer -->
     <footer>
-      <p>
-        &copy; 2025 Afrinova X Academy. Together, we can empower the next
-        generation of African tech leaders—one code, one idea, one student at a
-        time.
-      </p>
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-col">
+            <h4>Afrinova X Academy</h4>
+            <p>
+              Empowering Africa's future through AI education and innovation.
+              Bridging the digital divide from classrooms to boardrooms.
+            </p>
+            <div class="social-links">
+              <a href="#"><i class="fab fa-facebook-f"></i></a>
+              <a href="#"><i class="fab fa-twitter"></i></a>
+              <a href="#"><i class="fab fa-linkedin-in"></i></a>
+              <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+          </div>
+
+          <div class="footer-col">
+            <h4>Quick Links</h4>
+            <ul class="footer-links">
+              <li><a href="#about">About Us</a></li>
+              <li><a href="#programs">Programs</a></li>
+              <li><a href="#mission">Our Mission</a></li>
+              <li><a href="#why">Why It Matters</a></li>
+              <li><a href="#get-involved">Get Involved</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-col">
+            <h4>Programs</h4>
+            <ul class="footer-links">
+              <li><a href="#">Education & Youth</a></li>
+              <li><a href="#">Business Solutions</a></li>
+              <li><a href="#">Individual Upskilling</a></li>
+              <li><a href="#">ThinkTanks & Labs</a></li>
+              <li><a href="#">Events & Workshops</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-col">
+            <h4>Contact</h4>
+            <ul class="footer-links">
+              <li>
+                <i class="fas fa-envelope"></i> afrinovaxacademyinfo@gmail.com
+              </li>
+              <li><i class="fas fa-phone"></i> +254 792 233373</li>
+              <li><i class="fas fa-map-marker-alt"></i> Nairobi, Kenya</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="copyright">
+          <p>&copy; 2023 Afrinova X Academy. All Rights Reserved.</p>
+          <p>
+            Together, we'll build the skills, solutions, and leaders that Africa
+            needs—today and tomorrow.
+          </p>
+        </div>
+      </div>
     </footer>
 
     <script>
-      // Smooth scrolling for navigation links
-      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-        anchor.addEventListener("click", function (e) {
-          e.preventDefault();
-          document.querySelector(this.getAttribute("href")).scrollIntoView({
-            behavior: "smooth",
-          });
+      // Mobile Menu Toggle
+      const mobileToggle = document.querySelector(".mobile-toggle");
+      const nav = document.querySelector("nav");
+
+      mobileToggle.addEventListener("click", () => {
+        nav.classList.toggle("active");
+      });
+
+      // Close mobile menu when clicking a link
+      const navLinks = document.querySelectorAll("nav ul li a");
+      navLinks.forEach((link) => {
+        link.addEventListener("click", () => {
+          nav.classList.remove("active");
         });
       });
 
-      // Intersection Observer for fade-in animations
+      // Header scroll effect
+      window.addEventListener("scroll", () => {
+        const header = document.querySelector("header");
+        if (window.scrollY > 100) {
+          header.classList.add("scrolled");
+        } else {
+          header.classList.remove("scrolled");
+        }
+      });
+
+      // Smooth scrolling for anchor links
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+
+          const targetId = this.getAttribute("href");
+          if (targetId === "#") return;
+
+          const targetElement = document.querySelector(targetId);
+          if (targetElement) {
+            window.scrollTo({
+              top: targetElement.offsetTop - 80,
+              behavior: "smooth",
+            });
+          }
+        });
+      });
+
+      // Animation on scroll
       const observerOptions = {
+        root: null,
+        rootMargin: "0px",
         threshold: 0.1,
-        rootMargin: "0px 0px -50px 0px",
       };
 
-      const observer = new IntersectionObserver((entries) => {
+      const observer = new IntersectionObserver((entries, observer) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            entry.target.classList.add("visible");
+            entry.target.classList.add("animated");
+            observer.unobserve(entry.target);
           }
         });
       }, observerOptions);
 
-      // Observe all fade-in elements
-      document.querySelectorAll(".fade-in").forEach((el) => {
-        observer.observe(el);
-      });
-
-      // Header background change on scroll
-      window.addEventListener("scroll", () => {
-        const header = document.querySelector("header");
-        if (window.scrollY > 100) {
-          header.style.background = "rgba(255, 255, 255, 0.98)";
-          header.style.boxShadow = "0 2px 20px rgba(0,0,0,0.1)";
-        } else {
-          header.style.background = "rgba(255, 255, 255, 0.95)";
-          header.style.boxShadow = "none";
-        }
-      });
-
-      // Mobile menu toggle (basic functionality)
-      const mobileMenu = document.querySelector(".mobile-menu");
-      const navLinks = document.querySelector(".nav-links");
-
-      mobileMenu.addEventListener("click", () => {
-        navLinks.style.display =
-          navLinks.style.display === "flex" ? "none" : "flex";
-        if (navLinks.style.display === "flex") {
-          navLinks.style.position = "absolute";
-          navLinks.style.top = "100%";
-          navLinks.style.left = "0";
-          navLinks.style.right = "0";
-          navLinks.style.background = "white";
-          navLinks.style.flexDirection = "column";
-          navLinks.style.padding = "1rem";
-          navLinks.style.boxShadow = "0 5px 15px rgba(0,0,0,0.1)";
-        }
-      });
-
-      // Add some interactive elements
       document
-        .querySelectorAll(".program-card, .about-card")
-        .forEach((card) => {
-          card.addEventListener("mouseenter", () => {
-            card.style.transform = "translateY(-10px) scale(1.02)";
-          });
-
-          card.addEventListener("mouseleave", () => {
-            card.style.transform = "translateY(0) scale(1)";
-          });
+        .querySelectorAll(
+          ".section-title, .program-card, .about-text, .about-image"
+        )
+        .forEach((el) => {
+          observer.observe(el);
         });
     </script>
   </body>
